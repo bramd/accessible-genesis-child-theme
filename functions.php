@@ -12,7 +12,7 @@ function add_viewport_meta_tag() {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
 }
 
-/** Remove some Genesis widgets */
+/** Remove some Genesis widgets to be replaced by widgets in this theme */
 add_action( 'widgets_init', 'remove_genesis_widgets', 20 );
 function remove_genesis_widgets() {
     unregister_widget( 'Genesis_Latest_Tweets_Widget' );
@@ -77,11 +77,11 @@ function wpacc_skip_links() {
     <!-- skiplinks -->
     <br class="skip-link" />
     <?php
-    if ($nav) 			echo '<a href="#nav" class="skip-link">Jump to main navigation</a><br class="skip-link" />' . "\n";
-    echo '<a href="#content" class="skip-link">Jump to content</a><br class="skip-link" /> ' . "\n";
-	if ($sidebar) 		echo '<a href="#sidebar" class="skip-link">Jump to primary sidebar</a><br class="skip-link" />' . "\n";
-	if ($sidebar_alt) 	echo '<a href="#sidebar-alt" class="skip-link">Jump to secondary sidebar</a><br class="skip-link" />' . "\n";
-	if ($footer)	 	echo '<a href="#footer-widgets" class="skip-link">Jump to  footer</a><br class="skip-link" />' . "\n";
+    if ($nav) 			echo '<a href="#nav" class="skip-link">'. __( 'Jump to main navigation', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
+    echo '<a href="#content" class="skip-link">'. __( 'Jump to content', 'wpacc-genesis' ) .'</a><br class="skip-link" /> ' . "\n";
+	if ($sidebar) 		echo '<a href="#sidebar" class="skip-link">'. __( 'Jump to primary sidebar', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
+	if ($sidebar_alt) 	echo '<a href="#sidebar-alt" class="skip-link">'. __( 'Jump to secondary sidebar', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
+	if ($footer)	 	echo '<a href="#footer-widgets" class="skip-link">'. __( 'Jump to  footer', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
 
 }
 add_action ( 'genesis_header', 'wpacc_skip_links'); 
@@ -126,13 +126,14 @@ function wpacc_seo_site_description() {
 
 /** Add an H2 headeing to the primary navigation */
 function wpacc_add_header_to_primary_nav($nav_output) {
-	echo '<h2 class="hidden">Main navigation</h2>';
+	echo '<h2 class="hidden">'. __( 'Main navigation', 'wpacc-genesis' ) .'</h2>';
     return $nav_output;
 }
 add_filter( 'genesis_do_nav', 'wpacc_add_header_to_primary_nav', 10, 1 );
 
 
 /** add an H1 on archive and category pages */
+add_action ('genesis_before_loop', 'wpacc_add_h1');
 function wpacc_add_h1() {
 	global $posts, $wp_query;
 	if ( is_category() ) {
@@ -140,33 +141,31 @@ function wpacc_add_h1() {
 	} elseif ( is_archive() )  {
 		echo '<h1 class="entry-title">' . post_type_archive_title('',false) . "</h1>\n";	
 	} elseif ( is_search() )  {
-		echo '<h1 class="entry-title">Searchresults for: ' . get_search_query() . "</h1>\n";
+		echo '<h1 class="entry-title">'. __( 'Search results for', 'wpacc-genesis' ) . ': ' . get_search_query() . "</h1>\n";
 	}
 }
-add_action ('genesis_before_loop', 'wpacc_add_h1');
-
 
 /*
-Description: Removes all title tags from images in posts.
-Author: Ivan Glauser
-Author URI: http://www.glauserconsulting.com */
+Description: Removes all title tags from images and links in posts.
+Based on code from Ivan Glauser, http://www.glauserconsulting.com */
 
-add_filter( 'the_content', 'remove_img_titles', 1000 );
-add_filter( 'image_send_to_editor', 'remove_img_titles', 1000 );
-add_filter( 'post_thumbnail_html', 'remove_img_titles', 1000 );
-add_filter( 'wp_get_attachment_image', 'remove_img_titles', 1000 );
-add_filter( 'genesis_get_image', 'remove_img_titles', 1000 );
+add_filter( 'the_content', 'wpacc_remove_title_attr', 1000 );
+add_filter( 'image_send_to_editor', 'wpacc_remove_title_attr', 1000 );
+add_filter( 'post_thumbnail_html', 'wpacc_remove_title_attr', 1000 );
+add_filter( 'wp_get_attachment_image', 'wpacc_remove_title_attr', 1000 );
+add_filter( 'genesis_get_image', 'wpacc_remove_title_attr', 1000 );
+add_filter( 'genesis_footer_output', 'wpacc_remove_title_attr', 1000 );
 
-function remove_img_titles($text) {
+function wpacc_remove_title_attr($text) {
     
     // Get all title="..." tags from the html.
     $result = array();
     preg_match_all('|title="[^"]*"|U', $text, $result);
     
     // Replace all occurances with an empty string.
-    foreach($result[0] as $img_tag)
+    foreach($result[0] as $title_attr)
     {
-        $text = str_replace($img_tag, '', $text);
+        $text = str_replace($title_attr, '', $text);
     }
     
     return $text;
@@ -244,8 +243,6 @@ add_filter( 'excerpt_more', 'wp_acc_read_more_link' );
 add_filter( 'get_the_content_more_link', 'wp_acc_read_more_link' );
 add_filter( 'the_content_more_link', 'wp_acc_read_more_link' );
 function wp_acc_read_more_link() {
-	$link = '... <br><a class="more-link" href="' .get_permalink() . '" rel="nofollow">Read more aboutr '. get_the_title() . '</a>';
+	$link = '... <br><a class="more-link" href="' .get_permalink() . '" rel="nofollow">'. __( 'Read more about', 'wpacc-genesis' ) .' '. get_the_title() . '</a>';
 	return $link;
 }
-
-
