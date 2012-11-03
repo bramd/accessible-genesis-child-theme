@@ -13,3 +13,4 @@
 
 /** Load Widgets */
 require_once( get_stylesheet_directory() . '/lib/widgets/wpacc-latest-tweets-widget.php' );
+require_once( get_stylesheet_directory() . '/lib/widgets/wpacc-featured-post-widget.php' );

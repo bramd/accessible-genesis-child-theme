@@ -4,7 +4,7 @@
  *
  * @category WPACC
  * @package  Widgets
- * @author   RRWD, forked from StudioPress Featured Post Widget
+ * @author   RRWD, based on StudioPress Featured Post widget, used with permission
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.wp-accessible.org/
  */
@@ -15,7 +15,7 @@
  * @category WPACC
  * @package Widgets
  *
- * @since 1.0
+ * @since 0.2
  */
 class WPACC_Featured_Post extends WP_Widget {
 
@@ -29,7 +29,7 @@ class WPACC_Featured_Post extends WP_Widget {
 	/**
 	 * Constructor. Set the default widget options and create widget.
 	 *
-	 * @since 0.1.8
+	 * @since 0.2
 	 */
 	function __construct() {
 
@@ -76,7 +76,7 @@ class WPACC_Featured_Post extends WP_Widget {
 	/**
 	 * Echo the widget content.
 	 *
-	 * @since 0.1.8
+	 * @since 0.2
 	 *
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
@@ -94,8 +94,7 @@ class WPACC_Featured_Post extends WP_Widget {
 		$category_link = get_category_link( 1 );
 		/** Set up the author bio */
 		if ( ! empty( $instance['title'] ) )
-			echo $before_title . '<a href="' . esc_url( $category_link ) . '">' . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base )."</a>" . $after_title;
-			// echo $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title;
+			echo $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title;
 
 		$query_args = array(
 			'post_type' => 'post',
@@ -109,13 +108,12 @@ class WPACC_Featured_Post extends WP_Widget {
 		$featured_posts = new WP_Query( $query_args );
 
 		if ( $featured_posts->have_posts() ) : while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
-			//echo '<div class="' . implode( ' ', get_post_class() ) . '">';
+			echo '<div class="' . implode( ' ', get_post_class() ) . '">';
 
 			if ( ! empty( $instance['show_image'] ) )
 				printf(
-					'<a href="%s" title="%s" class="%s">%s</a>',
+					'<a href="%s" class="%s">%s</a>',
 					get_permalink(),
-					the_title_attribute( 'echo=0' ),
 					esc_attr( $instance['image_alignment'] ),
 					genesis_get_image( array( 'format' => 'html', 'size' => $instance['image_size'], ) )
 				);
@@ -127,7 +125,7 @@ class WPACC_Featured_Post extends WP_Widget {
 			}
 
 			if ( ! empty( $instance['show_title'] ) )
-				printf( '<h3><a href="%s" title="%s">%s</a></h3>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+				printf( '<h3><a href="%s" >%s</a></h3>', get_permalink(), get_the_title() );
 
 			if ( ! empty( $instance['show_byline'] ) && ! empty( $instance['post_info'] ) )
 				printf( '<p class="byline post-info">%s</p>', do_shortcode( $instance['post_info'] ) );
@@ -141,7 +139,7 @@ class WPACC_Featured_Post extends WP_Widget {
 					the_content( esc_html( $instance['more_text'] ) );
 			}
 
-			//echo '</div><!--end post_class()-->'."\n\n";
+			echo '</div><!--end post_class()-->'."\n\n";
 
 		endwhile; endif;
 
@@ -164,7 +162,7 @@ class WPACC_Featured_Post extends WP_Widget {
 			if ( $extra_posts->have_posts() ) {
 				while ( $extra_posts->have_posts() ) {
 					$extra_posts->the_post();
-					$listitems .= sprintf( '<li><a href="%s" title="%s">%s</a></li>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+					$listitems .= sprintf( '<li><a href="%s">%s</a></li>', get_permalink(), get_the_title() );
 				}
 
 				if ( strlen( $listitems ) > 0 )
@@ -174,9 +172,8 @@ class WPACC_Featured_Post extends WP_Widget {
 
 		if ( ! empty( $instance['more_from_category'] ) && ! empty( $instance['posts_cat'] ) )
 			printf(
-				'<p class="more-from-category"><a href="%1$s" title="%2$s">%3$s</a></p>',
+				'<p class="more-from-category"><a href="%1$s">%3$s</a></p>',
 				esc_url( get_category_link( $instance['posts_cat'] ) ),
-				esc_attr( get_cat_name( $instance['posts_cat'] ) ),
 				esc_html( $instance['more_from_category_text'] )
 			);
 
@@ -192,7 +189,7 @@ class WPACC_Featured_Post extends WP_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @since 0.1.8
+	 * @since 0.2
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form()
 	 * @param array $old_instance Old settings for this instance

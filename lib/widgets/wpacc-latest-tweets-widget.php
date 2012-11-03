@@ -4,7 +4,7 @@
  *
  * @category WPACC
  * @package  Widgets
- * @author   RRWD forked form StudioPress laters tweets widget
+ * @author   RRWD, based on StudioPress latest tweets widget, used with permission
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.wp-accessible.org/
  */
@@ -16,7 +16,7 @@
  * @category WPACC
  * @package Widgets
  *
- * @since 1.0
+ * @since 0.1
  */
 class WPACC_Latest_Tweets_Widget extends WP_Widget {
 
@@ -30,7 +30,7 @@ class WPACC_Latest_Tweets_Widget extends WP_Widget {
 	/**
 	 * Constructor. Set the default widget options and create widget.
 	 *
-	 * @since 0.1.8
+	 * @since 0.1
 	 */
 	function __construct() {
 
@@ -62,7 +62,7 @@ class WPACC_Latest_Tweets_Widget extends WP_Widget {
 	/**
 	 * Echo the widget content.
 	 *
-	 * @since 0.1.8
+	 * @since 0.1
 	 *
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
@@ -147,7 +147,7 @@ class WPACC_Latest_Tweets_Widget extends WP_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @since 0.1.8
+	 * @since 0.1
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form()
 	 * @param array $old_instance Old settings for this instance
@@ -232,7 +232,7 @@ add_action( 'widgets_init', create_function( '', "register_widget('WPACC_Latest_
  * Takes the content of a tweet, detects @replies, #hashtags, and
  * http:// links, and links them appropriately.
  *
- * @since 1.1.0
+ * @since 0.1
  *
  * @link http://www.snipe.net/2009/09/php-twitter-clickable-links/
  *

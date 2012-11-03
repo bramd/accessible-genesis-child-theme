@@ -1,0 +1,109 @@
+# Copyright (C) 2012 Rian Rietveld, rrwd.nl
+# This file is distributed under the same license as the  package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Accessible Genesis child theme\n"
+"Report-Msgid-Bugs-To: http://wp-accessible.org/\n"
+"POT-Creation-Date: 2012-11-03 08:05+0100\n"
+"PO-Revision-Date: 2012-11-03 08:06+0100\n"
+"Last-Translator: Rian Rietveld <rian@rrwd.nl>\n"
+"Language-Team: RRWD <rian@rrwd.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:80
+msgid "Jump to main navigation"
+msgstr ""
+
+#: functions.php:81
+msgid "Jump to content"
+msgstr ""
+
+#: functions.php:82
+msgid "Jump to primary sidebar"
+msgstr ""
+
+#: functions.php:83
+msgid "Jump to secondary sidebar"
+msgstr ""
+
+#: functions.php:84
+msgid "Jump to footer"
+msgstr ""
+
+#: functions.php:129
+msgid "Main navigation"
+msgstr ""
+
+#: functions.php:144
+msgid "Search results for"
+msgstr ""
+
+#: functions.php:194
+msgid ""
+"This is the primary sidebar if you are using a two or three column site "
+"layout option."
+msgstr ""
+
+#: functions.php:206
+msgid ""
+"This is the secondary sidebar if you are using a three column site layout "
+"option."
+msgstr ""
+
+#: functions.php:246
+msgid "Read more about: "
+msgstr ""
+
+#: lib/widgets/wpacc-featured-post-widget.php:51
+msgid "By"
+msgstr ""
+
+#: lib/widgets/wpacc-featured-post-widget.php:54
+msgid "[Read More...]"
+msgstr ""
+
+#: lib/widgets/wpacc-featured-post-widget.php:58
+msgid "More Posts from this Category"
+msgstr ""
+
+#: lib/widgets/wpacc-featured-post-widget.php:63
+msgid "Displays featured posts with thumbnails"
+msgstr ""
+
+#: lib/widgets/wpacc-featured-post-widget.php:240
+msgid "All Categories"
+msgstr ""
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:49
+msgid "Display a list of your latest tweets."
+msgstr ""
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:58
+msgid "WPACC - Latest Tweets"
+msgstr ""
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:98
+msgid "The Twitter API is taking too long to respond. Please try again later."
+msgstr ""
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:101
+msgid ""
+"There was an error while attempting to contact the Twitter API. Please try "
+"again."
+msgstr ""
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:104
+msgid ""
+"The Twitter API returned an error while processing your request. Please try "
+"again."
+msgstr ""

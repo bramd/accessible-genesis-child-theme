@@ -1,4 +1,7 @@
 <?php
+
+load_theme_textdomain('wpacc-genesis');
+
 /** Start the engine */
 require_once( get_template_directory() . '/lib/init.php' );
 
@@ -18,11 +21,8 @@ function remove_genesis_widgets() {
     unregister_widget( 'Genesis_Latest_Tweets_Widget' );
 }
 
-/** Add custom widgets */
+/** Include library to add custom widgets */
 require_once( get_stylesheet_directory()  . '/lib/init.php' );
-
-/** Add support for custom background */
-add_custom_background();
 
 /** Add support for custom header */
 add_theme_support( 'genesis-custom-header', array( 'width' => 960, 'height' => 100 ) );
@@ -36,7 +36,7 @@ add_action( 'genesis_doctype', 'wpacc_do_doctype_html5' );
 function wpacc_do_doctype_html5() {
 ?>
 <!DOCTYPE html>
-<html dir="ltr" lang="nl">                      
+<html dir="<?php bloginfo('ltr'); ?>" lang="<?php bloginfo('language'); ?>">                      
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 <?php
@@ -81,7 +81,7 @@ function wpacc_skip_links() {
     echo '<a href="#content" class="skip-link">'. __( 'Jump to content', 'wpacc-genesis' ) .'</a><br class="skip-link" /> ' . "\n";
 	if ($sidebar) 		echo '<a href="#sidebar" class="skip-link">'. __( 'Jump to primary sidebar', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
 	if ($sidebar_alt) 	echo '<a href="#sidebar-alt" class="skip-link">'. __( 'Jump to secondary sidebar', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
-	if ($footer)	 	echo '<a href="#footer-widgets" class="skip-link">'. __( 'Jump to  footer', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
+	if ($footer)	 	echo '<a href="#footer-widgets" class="skip-link">'. __( 'Jump to footer', 'wpacc-genesis' ) .'</a><br class="skip-link" />' . "\n";
 
 }
 add_action ( 'genesis_header', 'wpacc_skip_links'); 
@@ -92,7 +92,12 @@ add_action( 'genesis_site_title', 'wpacc_seo_site_title' );
 function wpacc_seo_site_title() {
 
 	/** Set what goes inside the wrapping tags */
-	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( get_bloginfo( 'name' ) ), get_bloginfo( 'name' ) );
+	
+	if (is_home() || is_front_page() ) {
+		$inside = sprintf( '%s', get_bloginfo( 'name' ) );
+	} else {
+		$inside = sprintf( '<a href="%s">%s</a>', trailingslashit( home_url() ), get_bloginfo( 'name' ) );
+	}
 
 	/** Determine which wrapping tags to use */
 	$wrap = 'p';
@@ -132,7 +137,7 @@ function wpacc_add_header_to_primary_nav($nav_output) {
 add_filter( 'genesis_do_nav', 'wpacc_add_header_to_primary_nav', 10, 1 );
 
 
-/** add an H1 on archive and category pages */
+/** add an H1 on archive, serach and category pages */
 add_action ('genesis_before_loop', 'wpacc_add_h1');
 function wpacc_add_h1() {
 	global $posts, $wp_query;
@@ -239,10 +244,37 @@ remove_action( 'widgets_init', 'ss_register_sidebars', 16 );
 add_action( 'widgets_init', 'wpacc_ss_register_sidebars' );
 
 /** Read More changed adding the title to the link */
-add_filter( 'excerpt_more', 'wp_acc_read_more_link' );
-add_filter( 'get_the_content_more_link', 'wp_acc_read_more_link' );
-add_filter( 'the_content_more_link', 'wp_acc_read_more_link' );
-function wp_acc_read_more_link() {
-	$link = '... <br><a class="more-link" href="' .get_permalink() . '" rel="nofollow">'. __( 'Read more about', 'wpacc-genesis' ) .' '. get_the_title() . '</a>';
+add_filter( 'excerpt_more', 'wpacc_read_more_link' );
+add_filter( 'get_the_content_more_link', 'wpacc_read_more_link' );
+add_filter( 'the_content_more_link', 'wpacc_read_more_link' );
+function wpacc_read_more_link() {
+	$link = '... <br><a class="more-link" href="' .get_permalink() . '" rel="nofollow">'. __( 'Read more about: ', 'wpacc-genesis' ) .' '. get_the_title() . '</a>';
 	return $link;
 }
+
+/** Remove rel attribute from the category list to pass HTML5 validation
+http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
+ */
+add_filter('wp_list_categories', 'wpacc_remove_category_list_rel');
+add_filter('the_category', 'wpacc_remove_category_list_rel');
+function iacobien_remove_category_list_rel($output) {
+  $output = str_replace(' rel="category tag"', '', $output);
+  return $output;
+}
+
+/**
+* Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+*/
+add_action( 'wp_enqueue_scripts', 'wpacc_add_my_stylesheet' );
+
+
+/**
+* Enqueue style file for printing
+*/
+function wpacc_add_my_stylesheet() {
+	// Respects SSL, Style.css is relative to the current file
+	wp_register_style( 'wpacc-print-style', get_stylesheet_directory_uri() . '/style-print.css', array(), '1.0', 'print' );
+	wp_enqueue_style( 'wpacc-style' );
+}
+
+

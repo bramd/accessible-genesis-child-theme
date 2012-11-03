@@ -1,0 +1,15 @@
+/*
+	Description: Stylesheet for printing
+    Part of the Accessible Child Theme for the Genesis Framework
+*/
+
+@media print {
+	.skip-link {
+	  display: none;
+  	}
+  
+	#nav {
+	  display: none;
+  	}
+  
+}

@@ -1,13 +1,13 @@
 /*
     Theme Name: Accessible Child Theme
-	Theme URI: http://www.studiopress.com/themes/sample
+	Theme URI: http://wp-accessible.org/2012/09/accessible-child-theme-for-the-genesis-framework/
 	Description: Accessible Child Theme is a two or three column child theme created for the Genesis Framework with adjustment made to improve the aceesibility.
     Author: Rian Rietveld
     Author URI: http://www.rrwd.nl/
  
-    Version: 0.1
+    Version: 0.2
  
-    Tags: blue, accessible, gray, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, custom-background, custom-header, custom-menu, full-width-template, sticky-post, theme-options, threaded-comments
+    Tags: Genesis, Accessible. WCAG, Wp-accessibile
  
     Template: genesis
     Template Version: 1.8
@@ -83,6 +83,25 @@
 /* Defaults
 ------------------------------------------------------------ */
 
+body {
+	font-size: 100%;
+}
+
+
+h1,
+h2,
+h2 a,
+h2 a:visited,
+h3,
+h4,
+h5,
+h6,
+p,
+select,
+textarea {
+	font-size: 1em;
+}
+
 body,
 h1,
 h2,
@@ -95,9 +114,8 @@ h6,
 p,
 select,
 textarea {
-	color: #333;
+	color: #000;
 	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-	font-size: 100%;
 	font-weight: 300;
 	line-height: 1.5625;
 	margin: 0;
@@ -139,7 +157,7 @@ ol li {
 	list-style-type: decimal;
 }
 
-/* Screen readers specials
+/* Screen reader and keyboard specials
 ------------------------------------------------------------ */
 .hidden {
 	background-color: #fff;
@@ -177,18 +195,17 @@ a.skip-link:focus, a.skip-link:active {
 	
 }
 
-
 /* Hyperlinks
 ------------------------------------------------------------ */
 
 a,
 a:visited {
 	color: #005AA4;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a img {
@@ -250,12 +267,12 @@ body {
 	line-height: 1.25;
 	margin: 0;
 	text-transform: uppercase;
+	padding: 0 0 0 20px;
 }
 
 #title a,
 #title a:hover {
 	color: #333;
-	padding: 0 0 0 20px;
 	text-decoration: none;
 }
 
@@ -468,6 +485,13 @@ ul.menu li.sfHover ul,
 #wpadminbar li:hover ul ul {
 	left: 0;
 }
+
+
+
+/* Extra styles to allow keyboard accessibility of primary and secundairy */
+/* Documentation and development: http://www.coolfields.co.uk/2011/12/wordpress-keyboard-accessible-dropdown-menus-plugin-version-0-1/ */
+
+
 
 
 /* Primary Navigation Extras

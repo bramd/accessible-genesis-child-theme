@@ -1,0 +1,128 @@
+# Copyright (C) 2012 Rian Rietveld, rrwd.nl
+# This file is distributed under the same license as the  package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Accessible Genesis child theme\n"
+"Report-Msgid-Bugs-To: http://wp-accessible.org/\n"
+"POT-Creation-Date: 2012-11-03 08:14+0100\n"
+"PO-Revision-Date: 2012-11-03 08:16+0100\n"
+"Last-Translator: Rian Rietveld <rian@rrwd.nl>\n"
+"Language-Team: RIAN <rian@rrwd.nl>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ wpacc-genesis
+#: functions.php:80
+msgid "Jump to main navigation"
+msgstr "Spring naar de hoofdnavigatie"
+
+# @ wpacc-genesis
+#: functions.php:81
+msgid "Jump to content"
+msgstr "Spring naar de inhoud"
+
+# @ wpacc-genesis
+#: functions.php:82
+msgid "Jump to primary sidebar"
+msgstr "Spring naar de primaire zijbalk"
+
+# @ wpacc-genesis
+#: functions.php:83
+msgid "Jump to secondary sidebar"
+msgstr "Spring naar de secundaire zijbalk"
+
+# @ wpacc-genesis
+#: functions.php:84
+msgid "Jump to footer"
+msgstr "Spring naar de footer"
+
+# @ wpacc-genesis
+#: functions.php:129
+msgid "Main navigation"
+msgstr "Hoofdnavigatie"
+
+# @ wpacc-genesis
+#: functions.php:144
+msgid "Search results for"
+msgstr "Zoekresultaten voor"
+
+#: functions.php:194
+msgid ""
+"This is the primary sidebar if you are using a two or three column site "
+"layout option."
+msgstr ""
+"Dit is de primaire sidecar in het geval dat je de twee of drie kolom layout "
+"instelling gebruikt."
+
+#: functions.php:206
+msgid ""
+"This is the secondary sidebar if you are using a three column site layout "
+"option."
+msgstr ""
+"Dit is de secondaire sidebar in het geval dat je de drie kolom layout "
+"instelling gebruikt."
+
+# @ wpacc-genesis
+#: functions.php:246
+msgid "Read more about: "
+msgstr "Lees meer over"
+
+#: lib/widgets/wpacc-featured-post-widget.php:51
+msgid "By"
+msgstr "Door"
+
+#: lib/widgets/wpacc-featured-post-widget.php:54
+msgid "[Read More...]"
+msgstr "[Lees verder…]"
+
+#: lib/widgets/wpacc-featured-post-widget.php:58
+msgid "More Posts from this Category"
+msgstr "Meer berichten uit deze categorie"
+
+#: lib/widgets/wpacc-featured-post-widget.php:63
+msgid "Displays featured posts with thumbnails"
+msgstr "Toon artikel features met thumbnails"
+
+#: lib/widgets/wpacc-featured-post-widget.php:240
+msgid "All Categories"
+msgstr "Meer berichten uit deze categorie"
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:49
+msgid "Display a list of your latest tweets."
+msgstr "Toon een lijst van je laatste tweets."
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:58
+msgid "WPACC - Latest Tweets"
+msgstr "WPACC - Nieuwste tweets"
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:98
+msgid "The Twitter API is taking too long to respond. Please try again later."
+msgstr ""
+"Het duurt te lang voor de Twitter API om te reageren. Probeer het later nog "
+"eens."
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:101
+msgid ""
+"There was an error while attempting to contact the Twitter API. Please try "
+"again."
+msgstr ""
+"Er heeft zich een fout voorgedaan bij het benaderen van de Twitter API. "
+"Probeer het nog een keer."
+
+#: lib/widgets/wpacc-latest-tweets-widget.php:104
+msgid ""
+"The Twitter API returned an error while processing your request. Please try "
+"again."
+msgstr ""
+"De Twitter API heeft een fout genegereerd tijdens het behandelen van je "
+"aanvraag. Probeer het nog een keer."
