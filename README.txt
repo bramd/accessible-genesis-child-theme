@@ -1,5 +1,6 @@
 README.txt Accessible Child Theme for the Genesis Framework
 Rian Rietveld http://www.rrwd.nl
+This Child Theme needs the Genesis Framework, available at http://www.studiopress.com/themes/genesis
 
 Version 0.2
 ===========
