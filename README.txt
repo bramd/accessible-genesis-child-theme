@@ -9,7 +9,7 @@ Changes in version 0.2:
 
 Replaced Featured Post Widget for a more accessible one:
 - removed title attribute in links
-- changed heading h3 into h2 for items (matching the H2 for the widget title)
+- changed heading h2 into h3 for items (matching the H2 for the widget title)
 
 style.css
 -------------
