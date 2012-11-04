@@ -12,7 +12,7 @@ Changes in version 0.2:
 
 Replaced Featured Post Widget for a more accessible one:
 - removed title attribute in links
-- changed heading h2 into h2 for items (matching the H2 for the widget title)
+- changed heading h2 into h3 for items (matching the H2 for the widget title)
 
 style.css
 -------------
@@ -57,7 +57,7 @@ Heading and titles:
 - removed the H1 from the site title and the H2 from the description
 - added an H1 on archive and category pages
 - removed all title tags for images and links in posts
-- changed the heading for the widgets from a H4 into a H2 for semantics. Included code to make this worj for the plugin Genesis Simple Sidebars too
+- changed the heading for the widgets from a H4 into a H2 for semantics. Included code to make this work for the plugin Genesis Simple Sidebars too
 - added the post title to the "Read More" link
 - removed rel attribute from the category list to pass HTML5 validation
 
