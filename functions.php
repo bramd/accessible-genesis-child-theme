@@ -257,7 +257,7 @@ http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-at
  */
 add_filter('wp_list_categories', 'wpacc_remove_category_list_rel');
 add_filter('the_category', 'wpacc_remove_category_list_rel');
-function iacobien_remove_category_list_rel($output) {
+function wpacc_remove_category_list_rel($output) {
   $output = str_replace(' rel="category tag"', '', $output);
   return $output;
 }
