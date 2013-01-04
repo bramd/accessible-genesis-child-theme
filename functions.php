@@ -1,9 +1,9 @@
 <?php
 
-load_theme_textdomain('wpacc-genesis');
-
 /** Start the engine */
 require_once( get_template_directory() . '/lib/init.php' );
+
+load_child_theme_textdomain('wpacc-genesis', get_stylesheet_directory() . '/languages' );
 
 /** Child theme (do not remove) */
 define( 'CHILD_THEME_NAME', 'Accessible Child Theme' );
