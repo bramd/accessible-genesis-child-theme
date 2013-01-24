@@ -36,7 +36,7 @@ add_action( 'genesis_doctype', 'wpacc_do_doctype_html5' );
 function wpacc_do_doctype_html5() {
 ?>
 <!DOCTYPE html>
-<html dir="<?php bloginfo('ltr'); ?>" lang="<?php bloginfo('language'); ?>">                      
+<html dir="<?php bloginfo('text_direction'); ?>" lang="<?php bloginfo('language'); ?>">                      
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 <?php
