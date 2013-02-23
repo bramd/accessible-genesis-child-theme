@@ -129,15 +129,21 @@ function wpacc_seo_site_description() {
 
 }
 
-/** Add an H2 headeing to the primary navigation */
+/** Add an H2 heading to the primary navigation */
 function wpacc_add_header_to_primary_nav($nav_output) {
 	echo '<h2 class="hidden">'. __( 'Main navigation', 'wpacc-genesis' ) .'</h2>';
     return $nav_output;
 }
 add_filter( 'genesis_do_nav', 'wpacc_add_header_to_primary_nav', 10, 1 );
 
+/** Add a navigation role to all menus */
+function wpacc_add_nav_role ($nav_output) {
+	$nav_output = str_replace ('<div id="nav"', '<div id="nav" role="navigation"', $nav_output);
+	return $nav_output;
+}
 
-/** add an H1 on archive, serach and category pages */
+add_filter( 'genesis_do_nav', 'wpacc_add_nav_role');
+/** add an H1 on archive, search and category pages */
 add_action ('genesis_before_loop', 'wpacc_add_h1');
 function wpacc_add_h1() {
 	global $posts, $wp_query;
