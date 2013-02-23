@@ -42,6 +42,17 @@ function wpacc_do_doctype_html5() {
 <?php
 }
 
+/** Add a banner role to the header */
+remove_action( 'genesis_header', 'genesis_header_markup_open', 5);
+add_action( 'genesis_header', 'wpacc_header_markup_open', 5 );
+
+function wpacc_header_markup_open() {
+
+	echo '<div id="header" role="banner">';
+	genesis_structural_wrap( 'header' );
+
+}
+
 /** Add skiplinks for screen readers */
 function wpacc_skip_links() {
 	
@@ -143,6 +154,7 @@ function wpacc_add_nav_role ($nav_output) {
 }
 
 add_filter( 'genesis_do_nav', 'wpacc_add_nav_role');
+
 /** add an H1 on archive, search and category pages */
 add_action ('genesis_before_loop', 'wpacc_add_h1');
 function wpacc_add_h1() {
